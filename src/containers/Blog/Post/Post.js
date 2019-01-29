@@ -12,12 +12,11 @@ class Post extends Component {
     componentDidMount() {
         const category = this.props.match.params.category;
         const slug = this.props.match.params.slug;
-        axios.get('http://localhost:8080/api/categories/' + category + '/posts/' + slug)
+        axios.get('http://blog.tomasing.com:8080/categories/' + category + '/posts/' + slug)
             .then(response => {
                 this.setState({
                     post: response.data
                 });
-                console.log(response);
             });
     }
 

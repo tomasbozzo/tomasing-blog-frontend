@@ -13,8 +13,8 @@ class Blog extends Component {
         return (
             <div className="Blog">
                 <Header />
-                <Route path="/blog/" exact component={Posts} />
-                <Route path="/blog/:category/:slug" exact component={Post} />
+                <Route path="/" exact component={Posts} />
+                <Route path="/:category/:slug" exact component={Post} />
                 <Footer />
             </div>
         );

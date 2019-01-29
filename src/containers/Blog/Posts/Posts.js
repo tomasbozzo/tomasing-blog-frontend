@@ -11,18 +11,17 @@ class Posts extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/api/posts')
+        axios.get('http://blog.tomasing.com:8080/posts')
             .then(response => {
                 this.setState({
                     posts: response.data._embedded.postResourceList
                 });
-                console.log(response);
             });
     }
 
     getPostLink = (post) => {
         return {
-            pathname: this.props.match.url + '/' + post.category + '/' + post.slug
+            pathname: '/' + post.category + '/' + post.slug
         }
     }
 
