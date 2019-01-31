@@ -27,19 +27,30 @@ class Posts extends Component {
 
     getPosts = () => {
         return this.state.posts.map(p => (
-            <div className="row" key={p.slug}>
-                <div className="col-sm-12">
-                    <div>
-                        <h2><Link className="text-body" to={this.getPostLink(p)}>{p.title}</Link></h2>
-                        <div dangerouslySetInnerHTML={{__html: p.content}}></div>
+            <div>
+                <div className="row" key={p.slug}>
+                    <div className="col-sm-12">
                         <div>
-                            <Link className="float-right" to={this.getPostLink(p)}>Read the full story</Link>
-                            <span>Created by {p.publishedBy}</span>
+                            <h2><Link className="text-body" to={this.getPostLink(p)}>{p.title}</Link></h2>
+                            <div dangerouslySetInnerHTML={{ __html: p.content }}></div>
+                            <div>
+                                <Link className="float-right" to={this.getPostLink(p)}>Read the full story</Link>
+                                <span>Created by {p.publishedBy}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+                {this.getSeparator(p)}
             </div>
         ));
+    }
+
+    getSeparator(post) {
+        if (this.state.posts.indexOf(post) === this.state.posts.length - 1) {
+            return null;
+        } else {
+            return <hr />;
+        }
     }
 
     render() {
